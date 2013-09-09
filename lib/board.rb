@@ -2,6 +2,9 @@ class Board
 
   public
 
+  def initialize()
+  end
+
 	def initialize_player
 		@player = player
 	end
@@ -13,9 +16,19 @@ class Board
 	def register_shot_at_coordinates
 	end
 
+
 	def rows
-    [ ["", "", "", "s", ""], [], [], [], [], [] ]
+   
+    place_ships
 	end
+
+  def place_ships
+
+  end
+
+  def ships
+    @ships = [@battleship, @cruiser, @aircraft_carrier, @destroyer, @submarine, @patrol_boat]
+  end
 
 	def opponent_view
 	end
@@ -43,6 +56,6 @@ class Board
   end
 
   def patrol_boat
-    @patrol_boat = ["s", "s", "s"]
+    @patrol_boat = ["s", "s"]
   end
 end
