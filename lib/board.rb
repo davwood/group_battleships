@@ -20,7 +20,15 @@ class Board
 	end
 
 	def register_shot(at_coordinates)
+    letter = at_coordinates.chars[0].upcase
+    number_index = at_coordinates.chars[1].to_i - 1
+    letter_hash = {"A" => 0, "B" => 1, "C" => 2, "D" => 3
+      "E" => 4, "F" => 5, "G" => 6, "H" => 7 
+      "I" => 8, "J" => 9 }
+    letter_index = letter_hash[letter]
 
+    return puts 'ship hit!' @board_array[letter_index][number_index] = 'x' if @board_array[letter_index][number_index] == 's'
+    return puts 'You missed!' @board_array[letter_index][number_index] = 'o' 
 	end
 
 	def rows
