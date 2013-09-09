@@ -3,8 +3,6 @@ require_relative '../lib/player.rb'
 describe Player do
 
 	let(:player) {Player.new("Dave")}
-
-	# let(:board) {double :board [['s', 's', '', 's', '', '', 's', 's', 's', 's']]}
 	
 	it 'should initialize with a new player named Dave' do
 		expect(player.name).to eq("Dave")
