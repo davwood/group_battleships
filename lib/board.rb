@@ -3,7 +3,7 @@ class Board
   public
 
   def initialize
-    @board_array = []
+    @board_hash = {}
   end
 
   def board_array
@@ -19,7 +19,8 @@ class Board
 		@player.name
 	end
 
-	def register_shot_at_coordinates
+	def register_shot(at_coordinates)
+
 	end
 
 	def rows
@@ -33,34 +34,52 @@ class Board
 
   def place_ships
     @ships.each do |ship|
-      ship.each do |section|
-        section 
-      end
+        ship.horizontal?(ship, probability = nil)
+      # ship.each do |section|
+      # end
     end
   end
 
 ## HORIZONTAL OR VERTICAL?
   
-  def horizontal?(probability = nil)
+  def horizontal?(ship, probability = nil)
     probability ||= rand(1..2)
-    
+
     if probability == 1
-      random array
+      place horizontal(ship)
     else
-      random index
+      place_vertical(ship)
     end
+  end
+
+## PLACE HORIZONTALLY OR VERTICALLY
+
+  def place_horizontal(ship)
+    x = random_row
+    board_array[x..(x.ship.length)].each do |element|
+      element = "s"
+    end
+  end
+
+  def place_vertical(ship)
+    y = random_column
+    x = rand(1..5)
+    l = ship.length
+    @board_array[x..(x+l)]
   end
 
 
 ## TO PICK WHICH ARRAY IF HORIZONTAL
 
-  def random_array
+  def random_row(ship)
+    rand(1..10)
   end
 
 ## TO PICK WHICH INDEX IF VERTICAL
 
-  def random_index
-    end
+  def random_column(ship)
+    rand(1..10)
+  end
 
   def ships
     @ships = [@battleship, @cruiser, @aircraft_carrier, @destroyer, @submarine, @patrol_boat]
